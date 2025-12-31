@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './PokemonCard.module.css'
-import UnknownPokemon from '../../../assets/images/unknown-pokemon.png'
+import UnknownPokemon from '../../../assets/Images/unknown-pokemon.png'
 import Card from '../../atoms/Card'
   
 interface PokemonCardProps {
