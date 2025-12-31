@@ -1,0 +1,110 @@
+:root {
+  /* Colors - Primary & Brand */
+  --color-primary: #DC0A2D;
+  
+  /* Colors - Pokemon Types */
+  --color-pokemon-bug: #A7B723;
+  --color-pokemon-dark: #75574C;
+  --color-pokemon-dragon: #7037FF;
+  --color-pokemon-electric: #F9CF30;
+  --color-pokemon-fairy: #E69EAC;
+  --color-pokemon-fighting: #C12239;
+  --color-pokemon-fire: #F57D31;
+  --color-pokemon-flying: #A890F0;
+  --color-pokemon-ghost: #70559B;
+  --color-pokemon-grass: #74CB48;
+  --color-pokemon-ground: #DEC16B;
+  --color-pokemon-ice: #9AD6DF;
+  --color-pokemon-normal: #AAA67F;
+  --color-pokemon-poison: #A43E9E;
+  --color-pokemon-psychic: #FB5584;
+  --color-pokemon-rock: #B69E31;
+  --color-pokemon-steel: #B7B9D0;
+  --color-pokemon-water: #6493EB;
+  
+  /* Colors - Neutral */
+  --color-dark: #212121;
+  --color-medium: #666666;
+  --color-light: #E0E0E0;
+  --color-white: #FFFFFF;
+  --color-background: #EFEFEF;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  
+  /* Typography - Header Styles (Bold) */
+  --font-headline-size: 24px;
+  --font-headline-line-height: 32px;
+  --font-headline-weight: 700; /* Bold */
+  
+  --font-title-card-size: 10px;
+  --font-title-card-line-height: 12px;
+  --font-title-card-weight: 700; /* Bold */
+  
+  --font-subtitle-card-size: 12px;
+  --font-subtitle-card-line-height: 14px;
+  --font-subtitle-card-weight: 700; /* Bold */
+  
+  --font-subtitle-1-size: 14px;
+  --font-subtitle-1-line-height: 16px;
+  --font-subtitle-1-weight: 700; /* Bold */
+  
+  --font-subtitle-2-size: 12px;
+  --font-subtitle-2-line-height: 16px;
+  --font-subtitle-2-weight: 700; /* Bold */
+  
+  --font-subtitle-3-size: 10px;
+  --font-subtitle-3-line-height: 16px;
+  --font-subtitle-3-weight: 700; /* Bold */
+  
+  /* Typography - Body Styles (Regular) */
+  --font-body-1-size: 14px;
+  --font-body-1-line-height: 16px;
+  --font-body-1-weight: 400; /* Regular */
+  
+  --font-body-2-size: 12px;
+  --font-body-2-line-height: 16px;
+  --font-body-2-weight: 400; /* Regular */
+  
+  --font-body-3-size: 10px;
+  --font-body-3-line-height: 16px;
+  --font-body-3-weight: 400; /* Regular */
+  
+  --font-caption-size: 8px;
+  --font-caption-line-height: 12px;
+  --font-caption-weight: 400; /* Regular */
+  
+  /* Typography - Shorthand */
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  
+  /* Drop Shadows */
+  --shadow-drop-2dp: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-drop-6dp: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  
+  /* Inner Shadow */
+  --shadow-inner-2dp: inset 0px 2px 4px rgba(0, 0, 0, 0.2);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+  
+  /* Z-index layers */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-modal: 1000;
+  --z-toast: 2000;
+}

@@ -1,0 +1,21 @@
+.card {
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card--elevated {
+  box-shadow: var(--shadow-drop-2dp);
+}
+
+.card:hover {
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.card:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+

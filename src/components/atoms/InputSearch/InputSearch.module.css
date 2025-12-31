@@ -1,0 +1,44 @@
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) 48px;
+  background-color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-drop-2dp);
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--font-body-1-size);
+  line-height: var(--font-body-1-line-height);
+  font-weight: var(--font-body-1-weight);
+  color: var(--color-dark);
+  outline: none;
+  transition: box-shadow var(--transition-base);
+}
+
+.input::placeholder {
+  color: var(--color-medium);
+}
+
+.input:focus {
+  box-shadow: var(--shadow-drop-6dp);
+}
+
+.searchIcon {
+  position: absolute;
+  left: var(--spacing-md);
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+  /* Filtrar la imagen para que sea roja (color primario) */
+  filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}
+
