@@ -131,16 +131,21 @@ const HomePage = () => {
         <IconOrder />
       </div>
       <div className={styles.containerPokemonList}>
-        {pokemonList.map((pokemon, index) => (
-          <PokemonCard 
-            key={`${pokemon.id}-${index}`} 
-            id={pokemon.id} 
-            name={pokemon.name} 
-            image={pokemon.sprites.front_default || ''} 
-          />
-        ))}
-
-
+        {pokemonList.length > 0 ? (
+          pokemonList.map((pokemon, index) => (
+            <PokemonCard 
+              key={`${pokemon.id}-${index}`} 
+              id={pokemon.id} 
+              name={pokemon.name} 
+              image={pokemon.sprites.front_default || ''} 
+            />
+          ))
+        ) : searchQuery.trim() ? (
+          <div className={styles.noResults}>
+            <p className={styles.noResultsText}>No se encontró el Pokémon</p>
+            <p className={styles.noResultsSubtext}>Intenta buscar por nombre o número</p>
+          </div>
+        ) : null}
       </div>
     </div>
   );

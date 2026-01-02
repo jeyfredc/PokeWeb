@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import styles from './PokemonCard.module.css'
 import UnknownPokemon from '../../../assets/Images/unknown-pokemon.png'
 import Card from '../../atoms/Card/Card'
+import LazyImage from '../../atoms/LazyImage/LazyImage'
 import { useFavoritesStore } from '../../../store/slices/favoritesSlice'
   
 interface PokemonCardProps {
@@ -42,10 +43,8 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ id, name, image, onClick, isS
   }
 
   const [imageError, setImageError] = useState(false)
-  const [imageLoading, setImageLoading] = useState(true)
 
-  const imageUrl = image || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
-  const displayImage = imageError || imageLoading ? UnknownPokemon : imageUrl
+  const imageUrl = image || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
   const favorite = isFavorite(id)
 
   const handleStarClick = (e: React.MouseEvent) => {
@@ -58,13 +57,8 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ id, name, image, onClick, isS
     toggleFavorite({ id, name, image: imageToSave })
   }
 
-  const handleImageLoad = () => {
-    setImageLoading(false)
-  }
-
   const handleImageError = () => {
     setImageError(true)
-    setImageLoading(false)
   }
 
   return (
@@ -85,14 +79,21 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ id, name, image, onClick, isS
           <StarIcon isFavorite={favorite} />
         </button>
         <div className={styles.pokemonCardImageContainer}>
-          <img 
-            src={displayImage}
-            alt={name}
-            className={styles.pokemonCardImage} 
-            loading="lazy"
-            onLoad={handleImageLoad}
-            onError={handleImageError}
-          />
+          {imageError ? (
+            <img 
+              src={UnknownPokemon}
+              alt={name}
+              className={styles.pokemonCardImage} 
+            />
+          ) : (
+            <LazyImage
+              src={imageUrl}
+              alt={name}
+              className={styles.pokemonCardImage}
+              placeholder={UnknownPokemon}
+              onError={handleImageError}
+            />
+          )}
           <div className={styles.shadow}>
             <div className={styles.pokemonCardName}>{name}</div>
           </div> 
