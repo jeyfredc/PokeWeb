@@ -29,12 +29,6 @@ export const apolloClient = new ApolloClient({
               return [...existing, ...newItems];
             },
           },
-          pokemon_v2_pokemonspecies: {
-            keyArgs: ['where'],
-            merge(existing = [], incoming) {
-              return incoming;
-            },
-          },
         },
       },
       pokemon_v2_pokemon: {
@@ -52,7 +46,6 @@ export const apolloClient = new ApolloClient({
     },
     query: {
       fetchPolicy: 'cache-first',
-      nextFetchPolicy: 'cache-first',
     },
   },
 })

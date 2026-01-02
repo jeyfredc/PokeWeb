@@ -1,4 +1,4 @@
-import React from 'react'
+
 import styles from './LoadPage.module.css'
 import Pokeball from '../../../assets/Icons/pokeball.svg?react'
 const LoadPage = () => {
