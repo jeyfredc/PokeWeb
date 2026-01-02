@@ -47,7 +47,7 @@
 }
 
 .option:hover {
-  background-color: #f5f5f5;
+  background-color: var(--color-background);
 }
 
 .radioInput {
@@ -81,7 +81,7 @@
 
 .optionLabel {
   font-size: 1rem;
-  color: #333;
+  color: var(--color-dark);
   cursor: pointer;
   user-select: none;
 }

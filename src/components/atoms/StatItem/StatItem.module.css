@@ -24,7 +24,7 @@
 .statLabel {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #666;
+  color: var(--color-medium);
   text-align: right;
   text-transform: capitalize;
 }
@@ -32,13 +32,13 @@
 .statValue {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #333;
+  color: var(--color-dark);
   text-align: right;
 }
 
 .statBar {
   height: 8px;
-  background: #e0e0e0;
+  background: var(--color-light);
   border-radius: 4px;
   overflow: hidden;
   position: relative;
