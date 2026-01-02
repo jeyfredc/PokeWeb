@@ -15,8 +15,8 @@ Una aplicación web moderna y responsive para explorar información detallada de
 - [CSS Modules](#-css-modules)
 - [Testing](#-testing)
 - [Despliegue](#-despliegue)
-- [Visualización Menú](#-visualización-Menú)
-- [Visualizar como telefono desde el navegador](#-visualizar-como-telefono-desde-el-navegador)
+- [Visualización del Menú](#-visualización-del-menú)
+- [Visualización desde el Navegador como Teléfono](#-visualización-desde-el-navegador-como-teléfono)
 
 ## ✨ Características
 
