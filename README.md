@@ -15,7 +15,8 @@ Una aplicación web moderna y responsive para explorar información detallada de
 - [CSS Modules](#-css-modules)
 - [Testing](#-testing)
 - [Despliegue](#-despliegue)
-- [Visualización Menú](#-visualizarMenu)
+- [Visualización Menú](#-Visualización-Menú)
+- [Visualizar como telefono desde el navegador](#-Visualizar-como-telefono-desde-el-navegador)
 
 ## ✨ Características
 
@@ -311,8 +312,31 @@ El menú se cierra automáticamente al seleccionar una opción.
 
 ![Desplazamiento del Menú](./assets-Readme/desplazamientoMenu.png)
 
+
 *Vista del menú con animación de despliegue*
+
+## 📱 Visualización desde el Navegador como Teléfono
+
+Para probar la aplicación en diferentes dispositivos móviles directamente desde el navegador, puedes instalar una extensión de Chrome que simula diferentes modelos de teléfonos.
+
+### Instalación de la Extensión
+
+1. **Instala la extensión**: [Mobile Simulator - Responsive Testing Tool](https://chromewebstore.google.com/detail/mobile-simulator-responsi/ckejmhbmlajgoklhgbapkiccekfoccmk?hl=es)
+
+### Uso de la Extensión
+
+1. **Abre la extensión**: Haz clic en el icono de extensiones en tu navegador y selecciona "Simulador de teléfono Móvil"
+
+   ![Extensiones del Navegador](./assets-Readme/extensiones.png)
+
+2. **Selecciona el modelo**: Se abrirá la pantalla del simulador. Escoge la opción de cambiar modelo y podrás probar la aplicación con diferentes dispositivos móviles
+
+   ![Vista Mobile](./assets-Readme/vistasmobile.png)
+
+### Alternativas
+
+También puedes usar las **DevTools del navegador** (F12) y activar el modo de dispositivo móvil (Ctrl+Shift+M) para simular diferentes tamaños de pantalla sin necesidad de extensiones.
 
 ---
 
-**Desarrollado con ❤️ usando React, TypeScript y GraphQL**
+
