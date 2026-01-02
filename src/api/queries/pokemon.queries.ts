@@ -80,6 +80,7 @@ export const GET_POKEMON_BY_ID = gql`
       height
       weight
       base_experience
+      pokemon_species_id
       sprites: pokemon_v2_pokemonsprites {
         front_default: sprites(path: "front_default")
         other: sprites(path: "other.official-artwork.front_default")
@@ -101,11 +102,20 @@ export const GET_POKEMON_BY_ID = gql`
         }
         is_hidden
       }
-      species: pokemon_v2_pokemonspecies {
-        name
-        generation: pokemon_v2_generation {
-          name
-        }
+    }
+  }
+`
+
+// Query para obtener la descripción de un Pokémon por species_id
+export const GET_POKEMON_DESCRIPTION = gql`
+  query GetPokemonDescription($speciesId: Int!) {
+    pokemon_v2_pokemonspecies(where: { id: { _eq: $speciesId } }) {
+      name
+      pokemon_v2_pokemonspeciesflavortexts(
+        where: { language_id: { _eq: 9 } }
+        limit: 1
+      ) {
+        flavor_text
       }
     }
   }

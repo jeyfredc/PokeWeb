@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './PokemonCard.module.css'
 import UnknownPokemon from '../../../assets/Images/unknown-pokemon.png'
 import Card from '../../atoms/Card'
@@ -12,6 +13,15 @@ interface PokemonCardProps {
 }
 
 const PokemonCard: React.FC<PokemonCardProps> = ({ id, name, image, onClick, isSelected = false }) => {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick()
+    } else {
+      navigate(`/pokemon/${id}`)
+    }
+  }
   const [imageError, setImageError] = useState(false)
   const [imageLoading, setImageLoading] = useState(true)
 
@@ -30,7 +40,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ id, name, image, onClick, isS
   return (
     <Card 
       className={`${styles.pokemonCard} ${isSelected ? styles.selected : ''}`}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <div className={styles.upperSection}>
 

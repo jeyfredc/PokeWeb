@@ -5,23 +5,26 @@ export interface Pokemon {
   name: string
   height: number
   weight: number
-  baseExperience: number
+  base_experience: number
+  pokemon_species_id: number
   sprites: {
     front_default: string
-    other?: {
-      'official-artwork': {
-        front_default: string
-      }
-    }
-  }
+    other?: string
+  } | Array<{
+    front_default: string
+    other?: string
+  }>
   types: PokemonType[]
   stats: PokemonStat[]
   abilities: PokemonAbility[]
-  species: {
+  species?: {
     name: string
     generation: {
       name: string
     }
+    pokemon_v2_pokemonspeciesflavortexts: Array<{
+      flavor_text: string
+    }>
   }
 }
 
@@ -32,7 +35,7 @@ export interface PokemonType {
 }
 
 export interface PokemonStat {
-  baseStat: number
+  base_stat: number
   stat: {
     name: string
   }
