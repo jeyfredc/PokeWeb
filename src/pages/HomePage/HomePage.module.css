@@ -26,13 +26,43 @@
   margin: 0;
 }
 
+.pokeballButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+  position: relative;
+}
+
+.pokeballButton:hover {
+  opacity: 0.8;
+}
+
+.pokeballButton.menuActive .pokeball {
+  opacity: 0.9;
+}
+
 .pokeball {
   width: 48px;
   height: 48px;
+  transition: transform var(--transition-base);
+}
+
+.pokeballButton.menuActive .pokeball {
+  transform: rotate(90deg);
 }
 
 .pokeball * {
   fill: var(--color-white);
+}
+
+.menuWrapper {
+  position: relative;
+  z-index: 10;
 }
 
 .containerSearch {

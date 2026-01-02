@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background: var(--color-medium);
   padding-bottom: 0.5rem;
+  background: var(--color-light);
 }
 
 /* Header */
@@ -13,32 +13,27 @@
   background: var(--color-light);
 }
 
-.backButton {
-  background: none;
+.backIcon {
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.5rem;
+  color: var(--color-white);
   transition: opacity 0.2s;
 }
 
-.backButton:hover {
+.backIcon:hover {
   opacity: 0.7;
-}
-
-.backIcon {
-  width: 24px;
-  height: 24px;
-  color: #333;
 }
 
 .pokemonName {
   flex: 1;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #333;
+  color: var(--color-white);
   margin: 0;
   text-transform: capitalize;
 }
@@ -46,7 +41,7 @@
 .pokemonNumber {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #666;
+  color: var(--color-white);
 }
 
 /* Image Section */
@@ -166,70 +161,6 @@
   text-transform: capitalize;
 }
 
-/* About Section */
-.aboutSection {
-  margin-bottom: 1.5rem;
-}
-
-.sectionTitle {
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #333;
-  margin: 0 0 1rem 0;
-}
-
-.aboutGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-  align-items: start;
-}
-
-.aboutItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.aboutIcon {
-  width: 24px;
-  height: 24px;
-  margin-bottom: 0.5rem;
-  color: #666;
-}
-
-.aboutIcon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.aboutValue {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 0.25rem;
-}
-
-.aboutLabel {
-  font-size: 0.75rem;
-  color: #666;
-}
-
-.abilitiesList {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.abilityItem {
-  font-size: 0.85rem;
-  color: #666;
-  text-align: center;
-}
-
 /* Description */
 .description {
   margin-bottom: 1.5rem;
@@ -244,63 +175,6 @@
   text-align: center;
 }
 
-/* Stats Section */
-.statsSection {
-  margin-top: 1.5rem;
-}
-
-.statsList {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.statItem {
-  display: grid;
-  grid-template-columns: 40px 50px 1fr;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.statLabel {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #666;
-  text-align: right;
-}
-
-.statValue {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #333;
-  text-align: right;
-}
-
-.statBar {
-  height: 8px;
-  background: #e0e0e0;
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
-}
-
-.statBarBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-}
-
-.statBarFill {
-  height: 100%;
-  background: #9e9e9e;
-  border-radius: 4px;
-  transition: width 0.3s ease;
-  position: relative;
-  z-index: 1;
-}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -331,22 +205,6 @@
   .contentCard {
     padding: 1.25rem;
   }
-
-  .aboutGrid {
-    gap: 0.75rem;
-  }
-
-  .aboutValue {
-    font-size: 0.85rem;
-  }
-
-  .aboutLabel {
-    font-size: 0.7rem;
-  }
-
-  .abilityItem {
-    font-size: 0.8rem;
-  }
 }
 
 .pokemonImage {
@@ -354,4 +212,13 @@
   opacity: 1;
   width: 210px;
   height: 210px;
+}
+
+.backIcon svg {
+  width: 2em !important;
+  height: 2em !important;
+}
+
+.backIcon svg * {
+  fill: var(--color-white);
 }

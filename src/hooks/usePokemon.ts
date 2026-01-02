@@ -32,7 +32,8 @@ export const usePokemon = ({ id, name, skip = false }: UsePokemonParams): UsePok
   } = useQuery<PokemonDetailResponse>(GET_POKEMON_BY_ID, {
     variables: { id },
     skip: skip || !searchById || searchByName, // Skip si no hay ID o si hay nombre
-    fetchPolicy: 'cache-first'
+    fetchPolicy: 'cache-first',
+    nextFetchPolicy: 'cache-first'
   })
 
   // Query por nombre
@@ -43,7 +44,8 @@ export const usePokemon = ({ id, name, skip = false }: UsePokemonParams): UsePok
   } = useQuery<PokemonDetailResponse>(GET_POKEMON_BY_NAME, {
     variables: { name: `%${name}%` }, // Usar ILIKE con wildcards para búsqueda parcial
     skip: skip || !searchByName || searchById, // Skip si no hay nombre o si hay ID
-    fetchPolicy: 'cache-first'
+    fetchPolicy: 'cache-first',
+    nextFetchPolicy: 'cache-first'
   })
 
   // Determinar qué datos usar

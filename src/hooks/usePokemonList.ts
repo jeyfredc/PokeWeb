@@ -40,7 +40,8 @@ export const usePokemonList = ({
   } = useQuery<PokemonListResponse>(GET_POKEMON_LIST, {
     variables: { limit, offset },
     skip: filterById || filterByName,
-    fetchPolicy: 'cache-and-network'
+    fetchPolicy: 'cache-first',
+    nextFetchPolicy: 'cache-first'
   })
 
   // Query filtrada por ID
@@ -56,7 +57,8 @@ export const usePokemonList = ({
       offset
     },
     skip: !filterById || filterByName,
-    fetchPolicy: 'cache-and-network'
+    fetchPolicy: 'cache-first',
+    nextFetchPolicy: 'cache-first'
   })
 
   // Query filtrada por nombre
@@ -71,7 +73,8 @@ export const usePokemonList = ({
       offset
     },
     skip: !filterByName || filterById,
-    fetchPolicy: 'cache-and-network'
+    fetchPolicy: 'cache-first',
+    nextFetchPolicy: 'cache-first'
   })
 
   // Determinar qué datos usar

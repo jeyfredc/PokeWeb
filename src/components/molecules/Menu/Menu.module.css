@@ -1,0 +1,88 @@
+.menuContainer {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-drop-6dp);
+  min-width: 200px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all var(--transition-base);
+  z-index: 100;
+  pointer-events: none;
+}
+
+.menuContainer.menuOpen {
+  max-height: 300px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.header {
+  background: var(--color-primary);
+  padding: 1rem 1.5rem;
+}
+
+.headerTitle {
+  color: var(--color-white);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.optionsContainer {
+  padding: 1rem 0;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.option:hover {
+  background-color: #f5f5f5;
+}
+
+.radioInput {
+  width: 20px;
+  height: 20px;
+  margin-right: 1rem;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+  appearance: none;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  position: relative;
+}
+
+.radioInput:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.radioInput:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+}
+
+.optionLabel {
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+}
+

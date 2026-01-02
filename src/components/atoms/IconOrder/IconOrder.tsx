@@ -1,28 +1,33 @@
-import { useState } from 'react'
-
-import Sort  from '../../../assets/Icons/sort.svg?react'
+import Sort from '../../../assets/Icons/sort.svg?react'
+import { usePokemonFilterStore } from '../../../store/slices/pokemonSlice'
 import styles from './IconOrder.module.css'
 
 const IconOrder = () => {
-  const [isRotated, setIsRotated] = useState(false)
+  const { sortDirection, toggleSortDirection, sortOrder } = usePokemonFilterStore()
 
   const handleClick = () => {
-    setIsRotated(!isRotated)
+    // Solo permitir cambiar dirección si no es "favorites"
+    if (sortOrder !== 'favorites') {
+      toggleSortDirection()
+    }
   }
+
+  const isRotated = sortDirection === 'desc'
+  const isDisabled = sortOrder === 'favorites'
 
   return (
     <div
-      className={styles.container}
+      className={`${styles.container} ${isDisabled ? styles.disabled : ''}`}
       onClick={handleClick}
       role="button"
-      tabIndex={0}
+      tabIndex={isDisabled ? -1 : 0}
       onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
+        if (!isDisabled && (e.key === 'Enter' || e.key === ' ')) {
           e.preventDefault()
           handleClick()
         }
       }}
-      aria-label="Sort"
+      aria-label={isDisabled ? 'Sort disabled for favorites' : 'Toggle sort direction'}
     >
       <Sort 
         className={`${styles.sort} ${isRotated ? styles.rotated : ''}`}

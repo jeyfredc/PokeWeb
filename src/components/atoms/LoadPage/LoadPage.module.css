@@ -1,0 +1,30 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-light);
+}
+
+.loading {
+    font-size: 2em;
+        font-weight: bold;
+    color: var(--color-primary);
+}
+
+.loading * {
+    fill: var(--color-primary);
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.pokeball {
+    width: 48px;
+    height: 48px;
+}
+.pokeball * {
+    fill: var(--color-primary);
+}

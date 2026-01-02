@@ -17,21 +17,42 @@ export const apolloClient = new ApolloClient({
         fields: {
           pokemon_v2_pokemon: {
             // Merge policy para paginación
-            keyArgs: false,
+            keyArgs: ['where', 'limit', 'offset', 'order_by'],
             merge(existing = [], incoming) {
-              return [...existing, ...incoming]
+              // Si es una query de un solo Pokémon (por ID), reemplazar
+              if (incoming.length === 1 && existing.length === 1) {
+                return incoming;
+              }
+              // Para listas, hacer merge evitando duplicados
+              const existingIds = new Set(existing.map((p: { id: number }) => p.id));
+              const newItems = incoming.filter((p: { id: number }) => !existingIds.has(p.id));
+              return [...existing, ...newItems];
+            },
+          },
+          pokemon_v2_pokemonspecies: {
+            keyArgs: ['where'],
+            merge(existing = [], incoming) {
+              return incoming;
             },
           },
         },
+      },
+      pokemon_v2_pokemon: {
+        keyFields: ['id'],
+      },
+      pokemon_v2_pokemonspecies: {
+        keyFields: ['id'],
       },
     },
   }),
   defaultOptions: {
     watchQuery: {
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'cache-first',
+      nextFetchPolicy: 'cache-first',
     },
     query: {
       fetchPolicy: 'cache-first',
+      nextFetchPolicy: 'cache-first',
     },
   },
 })

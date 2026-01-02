@@ -1,0 +1,17 @@
+.typeSection {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.typeBadge {
+    background: var(--color-medium);
+    color: var(--color-white);
+    padding: 0.5rem 1.25rem;
+    border-radius: 20px;
+}
+.typeBadge * {
+    fill: var(--color-white);
+}

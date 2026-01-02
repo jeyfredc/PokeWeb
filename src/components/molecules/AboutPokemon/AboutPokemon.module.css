@@ -1,0 +1,26 @@
+.aboutSection {
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-medium);
+  margin: 0 0 1rem 0;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  align-items: end;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .aboutGrid {
+    gap: 0.75rem;
+  }
+}
+  

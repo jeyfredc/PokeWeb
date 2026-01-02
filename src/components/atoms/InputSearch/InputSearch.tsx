@@ -1,26 +1,21 @@
 import React from 'react'
 import searchIcon from '../../../styles/icons/search.png'
+import { usePokemonFilterStore } from '../../../store/slices/pokemonSlice'
 import styles from './InputSearch.module.css'
 
 interface InputSearchProps {
   placeholder?: string
-  value?: string
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onSearch?: (value: string) => void
   className?: string
 }
 
 const InputSearch: React.FC<InputSearchProps> = ({
   placeholder = 'Search',
-  value,
-  onChange,
-  onSearch,
   className = ''
 }) => {
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && onSearch && value) {
-      onSearch(value)
-    }
+  const { searchQuery, setSearchQuery } = usePokemonFilterStore()
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value)
   }
 
   return (
@@ -33,9 +28,8 @@ const InputSearch: React.FC<InputSearchProps> = ({
       <input
         type="text"
         placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        onKeyDown={handleKeyDown}
+        value={searchQuery}
+        onChange={handleChange}
         className={styles.input}
       />
     </div>

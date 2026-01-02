@@ -1,0 +1,63 @@
+.aboutSkillItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    position: relative;
+}
+
+.aboutSkillItemNoIcon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    position: relative;
+}
+
+.aboutSkillItemIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.aboutSkillItemValue {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-medium);
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 100%;
+    line-height: 1.3;
+}
+
+.aboutSkillItemNoIcon .aboutSkillItemValue {
+    font-size: 12px;
+    font-weight: 500;
+    color: #888;
+    line-height: 1.4;
+    padding: 0 0.25rem;
+}
+
+.aboutSkillItemLabel {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-medium);
+    text-align: center;
+    margin-top: auto;
+    padding-top: 0.25rem;
+}
+
+/* Asegurar que el label se vea igual siempre, incluso sin icono */
+.aboutSkillItemNoIcon .aboutSkillItemLabel {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-medium);
+    margin-top: auto;
+    padding-top: 0.25rem;
+}
+
+.aboutSkillItemIcon svg {
+    width: 100%;
+    height: 100%;
+}

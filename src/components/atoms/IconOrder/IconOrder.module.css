@@ -20,6 +20,15 @@
   outline-offset: 2px;
 }
 
+.container.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.container.disabled:hover {
+  opacity: 0.5;
+}
+
 .sort {
   width: 20px;
   height: 20px;
