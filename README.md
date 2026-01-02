@@ -60,7 +60,7 @@ Una aplicación web moderna y responsive para explorar información detallada de
 
 1. **Clonar el repositorio** (o descargar el proyecto)
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/jeyfredc/PokeWeb.git
    cd PokeWeb
    ```
 
