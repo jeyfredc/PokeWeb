@@ -1,10 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 import styles from "./PokemonDetailPage.module.css";
 import ArrowBack from "../../assets/Icons/arrow_back.svg?react";
 import ChevronLeft from "../../assets/Icons/chevron_left.svg?react";
 import ChevronRight from "../../assets/Icons/chevron_right.svg?react";
 import { useQuery } from "@apollo/client/react";
-import { GET_POKEMON_BY_ID, GET_POKEMON_DESCRIPTION } from "../../api/queries";
+import { GET_POKEMON_BY_ID, GET_POKEMON_DESCRIPTION, GET_POKEMON_GENERATION } from "../../api/queries";
 import type { PokemonDetailResponse } from "../../api/types/pokemon.types";
 import PokeballImage from "../../assets/Images/Pokeball_big.svg?react";
 import AboutPokemon from "../../components/molecules/AboutPokemon/AboutPokemon";
@@ -13,6 +14,7 @@ import StatItem from "../../components/atoms/StatItem/StatItem";
 import Button from "../../components/atoms/Button/Button";
 import LoadPage from "../../components/atoms/LoadPage/LoadPage";
 import TypeSection from "../../components/atoms/TypeSection/TypeSection";
+import { useDescriptionsStore } from "../../store/slices/descriptionsSlice";
 
 interface PokemonDescriptionResponse {
   pokemon_v2_pokemonspecies: Array<{
@@ -23,10 +25,20 @@ interface PokemonDescriptionResponse {
   }>;
 }
 
+interface PokemonGenerationResponse {
+  pokemon_v2_pokemonspecies: Array<{
+    id: number;
+    generation: {
+      name: string;
+    };
+  }>;
+}
+
 const PokemonDetailPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const pokemonId = id ? parseInt(id, 10) : 0;
+  const { getDescription, setDescription, hasDescription } = useDescriptionsStore();
 
   const {
     data: pokemonData,
@@ -42,16 +54,50 @@ const PokemonDetailPage = () => {
   const pokemon = pokemonData?.pokemon_v2_pokemon?.[0];
   const speciesId = pokemon?.pokemon_species_id;
 
+  // Verificar si ya tenemos la descripción en el store
+  const cachedDescription = speciesId ? getDescription(speciesId) : undefined;
+  const hasCachedDescription = speciesId ? hasDescription(speciesId) : false;
+
   const { data: descriptionData, loading: descriptionLoading } =
     useQuery<PokemonDescriptionResponse>(GET_POKEMON_DESCRIPTION, {
+      variables: { speciesId },
+      skip: !speciesId || hasCachedDescription, // Skip si ya tenemos la descripción en el store
+      fetchPolicy: 'cache-first',
+      nextFetchPolicy: 'cache-first',
+    });
+
+  const { data: generationData } =
+    useQuery<PokemonGenerationResponse>(GET_POKEMON_GENERATION, {
       variables: { speciesId },
       skip: !speciesId,
       fetchPolicy: 'cache-first',
       nextFetchPolicy: 'cache-first',
     });
 
-  const loading = pokemonLoading || descriptionLoading;
+  // Extraer la descripción de los datos de la query
+  const descriptionFromQuery = descriptionData?.pokemon_v2_pokemonspecies?.[0]?.pokemon_v2_pokemonspeciesflavortexts?.[0]?.flavor_text;
+  
+  // Extraer la generación de los datos de la query
+  const generationName = generationData?.pokemon_v2_pokemonspecies?.[0]?.generation?.name;
+
+  // Guardar la descripción en el store cuando se obtiene
+  useEffect(() => {
+    if (descriptionFromQuery && speciesId) {
+      // Solo guardar si no está en caché o si es diferente
+      const currentCached = getDescription(speciesId);
+      if (!currentCached || currentCached !== descriptionFromQuery) {
+        setDescription(speciesId, descriptionFromQuery);
+      }
+    }
+  }, [descriptionFromQuery, speciesId, getDescription, setDescription]);
+
+  // Solo mostrar loading si no tenemos la descripción en caché
+  const loading = pokemonLoading || (descriptionLoading && !hasCachedDescription && !descriptionFromQuery);
   const error = pokemonError;
+
+  // Obtener la descripción: primero del store, luego de la query
+  // Solo mostrar el mensaje por defecto si realmente no hay datos disponibles
+  const flavorText = cachedDescription || descriptionFromQuery || "No hay descripción disponible para este Pokémon.";
 
   if (loading) {
     return <LoadPage />;
@@ -89,7 +135,14 @@ const PokemonDetailPage = () => {
         >
           <ArrowBack />
         </Button>
-        <h1 className={styles.pokemonName}>{pokemon.name}</h1>
+        <div className={styles.pokemonNameContainer}>
+          <h1 className={styles.pokemonName}>{pokemon.name}</h1>
+          {generationName && (
+            <span className={styles.pokemonGeneration}>
+             {generationName.toUpperCase()}
+            </span>
+          )}
+        </div>
         <div className={styles.pokemonNumber}>
           #{String(pokemon.id).padStart(3, "0")}
         </div>
@@ -136,11 +189,7 @@ const PokemonDetailPage = () => {
 
         {/* Description */}
         <div className={styles.description}>
-          <p>
-            {descriptionData?.pokemon_v2_pokemonspecies?.[0]
-              ?.pokemon_v2_pokemonspeciesflavortexts?.[0]?.flavor_text ||
-              "No hay descripción disponible para este Pokémon."}
-          </p>
+          <p>{flavorText}</p>
         </div>
         {/* Base Stats Section */}
         <StatItem

@@ -38,6 +38,7 @@ const HomePage = () => {
     fetchPolicy: 'cache-first',
     nextFetchPolicy: 'cache-first',
     skip: sortOrder === 'favorites', // No hacer query si estamos en modo favorites
+    notifyOnNetworkStatusChange: false, // Evitar re-renders innecesarios cuando cambia el estado de red
   });
 
   const pokemonList = useMemo(() => {

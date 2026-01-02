@@ -106,10 +106,23 @@ export const GET_POKEMON_BY_ID = gql`
   }
 `
 
+// Query para obtener la generación de un Pokémon por species_id
+export const GET_POKEMON_GENERATION = gql`
+  query GetPokemonGeneration($speciesId: Int!) {
+    pokemon_v2_pokemonspecies(where: { id: { _eq: $speciesId } }) {
+      id
+      generation: pokemon_v2_generation {
+        name
+      }
+    }
+  }
+`
+
 // Query para obtener la descripción de un Pokémon por species_id
 export const GET_POKEMON_DESCRIPTION = gql`
   query GetPokemonDescription($speciesId: Int!) {
     pokemon_v2_pokemonspecies(where: { id: { _eq: $speciesId } }) {
+      id
       name
       pokemon_v2_pokemonspeciesflavortexts(
         where: { language_id: { _eq: 9 } }

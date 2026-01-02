@@ -6,11 +6,15 @@ interface MenuProps {
   onClose?: () => void
 }
 
-const Menu = ({ isOpen }: MenuProps) => {
+const Menu = ({ isOpen, onClose }: MenuProps) => {
   const { sortOrder, setSortOrder } = usePokemonFilterStore()
 
   const handleOptionChange = (order: 'number' | 'name' | 'favorites') => {
     setSortOrder(order)
+    // Cerrar el menú inmediatamente después de seleccionar una opción
+    if (onClose) {
+      onClose()
+    }
   }
 
   return (
